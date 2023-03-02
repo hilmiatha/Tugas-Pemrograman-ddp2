@@ -34,7 +34,7 @@ public class NotaGenerator {
                 String nomorHp;
                 while (true) { // validasi apabila nomorHp selain digit 0-9
                     nomorHp = input.nextLine();
-                    if (nomorHp.trim().chars().allMatch(Character::isDigit)){ //setiap char dari string akan dicek apakah digit atau bukan
+                    if (nomorHp.trim().length() > 0 && nomorHp.trim().chars().allMatch(Character::isDigit)){ //setiap char dari string akan dicek apakah digit atau bukan
                         break;
                     }else {
                         System.out.println("Nomor hp hanya menerima digit");
@@ -49,7 +49,7 @@ public class NotaGenerator {
                 String nomorHp;
                 while (true) { // validasi apabila nomorHp selain digit 0-9
                     nomorHp = input.nextLine().trim();
-                    if (nomorHp.trim().chars().allMatch(Character::isDigit)) {
+                    if (nomorHp.trim().length() > 0 && nomorHp.trim().chars().allMatch(Character::isDigit)) {
                         break;
                     } else {
                         System.out.println("Nomor hp hanya menerima digit");
