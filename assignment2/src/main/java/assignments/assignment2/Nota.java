@@ -78,7 +78,6 @@ public class Nota {
     }
 
     public Boolean getReady() { //TODO
-//        MainMenu.fmt
         if (sisaHariPengerjaan <= 0){
             return true;
         }
