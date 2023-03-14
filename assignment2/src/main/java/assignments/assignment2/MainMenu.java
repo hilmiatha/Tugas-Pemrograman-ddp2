@@ -149,30 +149,29 @@ public class MainMenu {
     private static void handleAmbilCucian() {
         // TODO: handle ambil cucian
         System.out.println("Masukan ID nota yang akan diambil:");
-        int idNota; //inisialisasi variabel pilihanUser
-        while (true) {
-            try { // validasi jika pilihanUser bukanlah integer
-                idNota = Integer.parseInt(input.nextLine().trim());
+        String idNotaString;
+        int idNota;
+        while(true){ // validasi ID Nota berbentuk angka
+            idNotaString = input.nextLine().trim();
+            if (idNotaString.trim().length() > 0 && idNotaString.trim().chars().allMatch(Character::isDigit)){
+                idNota = Integer.parseInt(idNotaString);
                 break;
-
-            } catch (NumberFormatException e) {
+            }else{
                 System.out.println("ID nota berbentuk angka!");
-
             }
         }
-        ArrayList<Nota> listSelesai = getListSelesai();
-        if (listSelesai.size() == 0) {
-            System.out.printf("Nota dengan ID %d gagal diambil!%n", idNota);
-            return;
-        } else {
-            for (Nota nota : listSelesai) {
-                if (nota.getIdNota() == idNota) {
+        //Validasi apabila ID Nota ada atau tidak
+        if (getNotaIdList().contains(idNota)){
+            for (Nota nota : getListSelesai()){
+                if (nota.getIdNota() == idNota){
                     notaList.remove(nota);
                     System.out.printf("Nota dengan ID %d berhasil diambil!%n",idNota);
                     return;
                 }
             }
             System.out.printf("Nota dengan ID %d gagal diambil!%n", idNota);
+        }else{
+            System.out.println("Nota dengan ID " + idNota + " tidak ditemukan!");
         }
     }
 
@@ -225,6 +224,13 @@ public class MainMenu {
             }
         }
         return listSelesai;
+    }
+    private static ArrayList<Integer> getNotaIdList() {
+        ArrayList<Integer> listIdNota = new ArrayList<>();
+        for (Nota nota : notaList) {
+            listIdNota.add(nota.getIdNota());
+        }
+        return listIdNota;
     }
 }
 

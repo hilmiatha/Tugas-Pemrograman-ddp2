@@ -78,12 +78,8 @@ public class Nota {
     }
 
     public Boolean getReady() { //TODO
-        if (sisaHariPengerjaan <= 0){
-            return true;
-        }
-        else {
-            return false;
-        }
+        isReady = this.getSisaHariPengerjaan() <= 0;
+        return isReady;
     }
     public String outputNota(){
         long harga;
@@ -118,8 +114,7 @@ public class Nota {
     public String getTanggalSelesai(){
         LocalDate tanggalAwal = LocalDate.parse(this.getTanggalMasuk(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         LocalDate tanggalAkhir = tanggalAwal.plusDays(this.getSisaHariPengerjaan());
-        String  tanggalSelesai = tanggalAkhir.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return tanggalSelesai;
+        return tanggalAkhir.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     public String getStatusReady(){
         String output;
