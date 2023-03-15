@@ -1,13 +1,10 @@
 package assignments.assignment2;
-
-import assignments.assignment1.NotaGenerator;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Nota {
-    // Attributes kelas nota
-    private static int objectCount = 0;
+    // Attributes kelas Nota
+    private static int objectCount = 0; //Counter untuk menentukan Id Nota
     private int idNota;
     private String paket;
     private Member member;
@@ -16,21 +13,20 @@ public class Nota {
     private int sisaHariPengerjaan;
     private Boolean isReady;
 
-    public Nota(Member member, String paket, long berat, String tanggalMasuk, int sisaHariPengerjaan) {
-        //constructor untuk class ini
+    public Nota(Member member, String paket, long berat, String tanggalMasuk, int sisaHariPengerjaan) {        //constructor untuk class Nota
         this.member = member;
         this.paket = paket;
         this.berat = berat;
         this.tanggalMasuk = tanggalMasuk;
         this.sisaHariPengerjaan = sisaHariPengerjaan;
-        this.member.setBonusCounter(this.member.getBonusCounter()+1);
-        this.idNota = objectCount;
-        objectCount++;
+        this.member.setBonusCounter(this.member.getBonusCounter()+1); //Bonus counter bertambah apabila member menambah nota/pesanan
+        this.idNota = objectCount; // Assign idNota
+        objectCount++; //idNota bertambah setiap nota dibuat agar unique
 
 
     }
 
-    //TODO: methods class ini
+    //methods class Nota
 
     public int getIdNota() {
         return idNota;
@@ -40,6 +36,10 @@ public class Nota {
     public String getPaket() {
         return paket;
     }
+
+    /*
+    Method untuk return harga per paket
+     */
     public int getHargaPaket(){
         int harga = 0;
         if (this.getPaket().equalsIgnoreCase("Express")){
@@ -77,10 +77,14 @@ public class Nota {
         this.sisaHariPengerjaan = sisaHariPengerjaan;
     }
 
-    public Boolean getReady() { //TODO
+    public Boolean getReady() {
         isReady = this.getSisaHariPengerjaan() <= 0;
         return isReady;
     }
+
+    /*
+    Method untuk return output String yang sesuai dengan permintaan soal
+     */
     public String outputNota(){
         long harga;
         String output;

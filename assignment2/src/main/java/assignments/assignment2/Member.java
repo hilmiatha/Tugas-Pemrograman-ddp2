@@ -1,23 +1,20 @@
 package assignments.assignment2;
 
-import assignments.assignment1.NotaGenerator;
-
 public class Member {
 
-    //attributes class ini
+    //attributes class Member
     private String nama;
     private String noHp;
     private String id;
-    private int bonusCounter = -1;
+    private int bonusCounter = -1; //starting point untuk diskon member
 
-    public Member(String nama, String noHp, String id) {
-        // constructor untuk class ini
+    public Member(String nama, String noHp, String id) {        // constructor untuk class Member
         this.nama = nama;
         this.noHp = noHp;
         this.id = id;
     }
 
-    // TODO: tambahkan methods yang diperlukan untuk class ini
+    //methods yang diperlukan untuk class Member
 
     public String getNama() {
         return nama;
