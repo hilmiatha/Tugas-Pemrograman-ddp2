@@ -1,9 +1,6 @@
 package assignments.assignment2;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 import static assignments.assignment1.NotaGenerator.*;
 
@@ -163,13 +160,13 @@ public class MainMenu {
             for (Nota nota : getListSelesai()){
                 if (nota.getIdNota() == idNota){
                     notaList.remove(nota);
-                    System.out.printf("Nota dengan ID %d berhasil diambil!%n",idNota); //output apabila cucian berhasil diambil
+                    System.out.printf("Nota dengan ID %s berhasil diambil!%n",idNotaString); //output apabila cucian berhasil diambil
                     return;
                 }
             }
-            System.out.printf("Nota dengan ID %d gagal diambil!%n", idNota); //output apabila cucian belum siap diambil
+            System.out.printf("Nota dengan ID %s gagal diambil!%n", idNotaString); //output apabila cucian belum siap diambil
         }else{
-            System.out.println("Nota dengan ID " + idNota + " tidak ditemukan!"); //output apabila ID Nota tidak terdaftar
+            System.out.println("Nota dengan ID " + idNotaString + " tidak ditemukan!"); //output apabila ID Nota tidak terdaftar
         }
     }
 
