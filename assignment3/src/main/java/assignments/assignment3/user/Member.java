@@ -1,6 +1,9 @@
 package assignments.assignment3.user;
 
 import assignments.assignment3.nota.Nota;
+
+import java.util.Arrays;
+
 public class Member {
     protected String id;
     protected String password;
@@ -31,6 +34,9 @@ public class Member {
      */
     public void addNota(Nota nota) {
         // TODO
+        Nota[] lstDummy = Arrays.copyOf(notaList, notaList.length+1);
+        lstDummy[lstDummy.length-1] = nota;
+        notaList = lstDummy;
     }
 
     /**
@@ -40,8 +46,7 @@ public class Member {
      * @return true jika ID dan password sesuai dengan instance member, false jika tidak.
      */
     protected boolean authenticate(String password) {
-        // TODO
-        return false;
+        return this.password.equals(password);
     }
 
     // Dibawah ini adalah getter

@@ -1,6 +1,7 @@
 package assignments.assignment3.nota;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class NotaManager {
@@ -13,6 +14,10 @@ public class NotaManager {
      */
     public static void toNextDay(){
         //TODO: implement skip hari
+        cal.add(Calendar.DAY_OF_MONTH, 1);
+        for (Nota nota : notaList){
+            nota.toNextDay();
+        }
     }
 
     /**
@@ -22,5 +27,8 @@ public class NotaManager {
      */
     public static void addNota(Nota nota){
         //TODO: implement add nota
+        Nota[] lstDummy = Arrays.copyOf(notaList, notaList.length+1);
+        lstDummy[lstDummy.length-1] = nota;
+        notaList = lstDummy;
     }
 }

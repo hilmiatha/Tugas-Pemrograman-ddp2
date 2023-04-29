@@ -1,5 +1,13 @@
 package assignments.assignment3.user.menu;
+
+import assignments.assignment3.nota.Nota;
+import assignments.assignment3.nota.service.AntarService;
+import assignments.assignment3.nota.service.SetrikaService;
 import assignments.assignment3.user.Member;
+
+import java.util.Arrays;
+
+import static assignments.assignment3.nota.NotaManager.*;
 
 public class MemberSystem extends SystemCLI {
     /**
@@ -11,7 +19,48 @@ public class MemberSystem extends SystemCLI {
     @Override
     protected boolean processChoice(int choice) {
         boolean logout = false;
-        // TODO
+        displaySpecificMenu();
+        if (choice == 1){
+            showPaket();
+            String paketLaundry = in.nextLine();
+            System.out.println("Masukan berat cucian anda [Kg]: ");
+            int beratCucian = Integer.parseInt(in.nextLine());
+            if (beratCucian < 2){
+                beratCucian = 2;
+                System.out.println("Cucian kurang dari 2 kg, maka cucian akan dianggap sebagai 2 kg");
+            }
+            String tanggalMasuk = fmt.format(cal.getTime());
+            Nota nota = new Nota(loginMember,beratCucian,paketLaundry,tanggalMasuk);
+            addNota(nota); //menambah nota di list semua nota
+            loginMember.addNota(nota); //menambah nota di list nota member tersebut
+
+            System.out.println("Apakah kamu ingin cucianmu disetrika oleh staff professional kami?\nHanya tambah 1000 / kg :0");
+            System.out.print("[Ketik x untuk tidak mau]: ");
+            String setrikaChoice = in.nextLine();
+            if (!setrikaChoice.equalsIgnoreCase("x")){
+                SetrikaService setrika = new SetrikaService();
+                nota.addService(setrika);
+            }
+
+            System.out.println("Mau diantar oleh kurir kami? Dijamin aman dan cepat sampai tujuan!\nCuma 2000 / 4kg, kemudian 500 / kg");
+            System.out.print("[Ketik x untuk tidak mau]: ");
+            String antarChoice = in.nextLine();
+            if (!antarChoice.equalsIgnoreCase("x")){
+                AntarService antar = new AntarService();
+                nota.addService(antar);
+            }
+            System.out.println("Nota berhasil dibuat!");
+
+
+        } else if (choice == 2) {
+            for (Nota nota : loginMember.getNotaList()){
+                System.out.println(nota);
+            }
+        } else if (choice == 3) {
+            logout = true;
+        }else{
+            System.out.println("Perintah tidak tepat!");
+        }
         return logout;
     }
 
@@ -31,6 +80,16 @@ public class MemberSystem extends SystemCLI {
      * @param member -> Member baru yang akan ditambahkan.
      */
     public void addMember(Member member) {
-        // TODO
+        Member[] lstDummy = Arrays.copyOf(memberList, memberList.length+1);
+        lstDummy[lstDummy.length-1] = member;
+        memberList = lstDummy;
+    }
+    public static void showPaket() {
+        System.out.println("Masukan paket laundry: ");
+        System.out.println("+-------------Paket-------------+");
+        System.out.println("| Express | 1 Hari | 12000 / Kg |");
+        System.out.println("| Fast    | 2 Hari | 10000 / Kg |");
+        System.out.println("| Reguler | 3 Hari |  7000 / Kg |");
+        System.out.println("+-------------------------------+");
     }
 }

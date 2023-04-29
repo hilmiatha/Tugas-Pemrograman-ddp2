@@ -1,10 +1,11 @@
 package assignments.assignment3;
 
-import assignments.assignment1.NotaGenerator;
 import assignments.assignment3.user.Member;
 import assignments.assignment3.user.menu.EmployeeSystem;
 import assignments.assignment3.user.menu.MemberSystem;
 import assignments.assignment3.user.menu.SystemCLI;
+
+import static assignments.assignment1.NotaGenerator.generateId;
 
 public class LoginManager {
     private final EmployeeSystem employeeSystem;
@@ -41,6 +42,12 @@ public class LoginManager {
      */
     public Member register(String nama, String noHp, String password) {
         // TODO
-        return null;
+        String idMember = generateId(nama,noHp);
+        if (memberSystem.isMemberExist(idMember)){
+            return null;
+        }
+        Member memberBaru = new Member(nama,idMember,password);
+        memberSystem.addMember(memberBaru);
+        return memberBaru;
     }
 }
