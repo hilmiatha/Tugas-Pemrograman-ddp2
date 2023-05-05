@@ -4,14 +4,12 @@ public class AntarService implements LaundryService{
     private Boolean status = false;
     @Override
     public String doWork() {
-        // TODO
         this.status = true;
         return "Sedang mengantar...";
     }
 
     @Override
     public boolean isDone() {
-        // TODO
         return status;
     }
 

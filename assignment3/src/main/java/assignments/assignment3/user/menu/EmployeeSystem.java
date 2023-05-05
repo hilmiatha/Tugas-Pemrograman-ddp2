@@ -31,15 +31,18 @@ public class EmployeeSystem extends SystemCLI {
         boolean logout = false;
         // TODO:
         if (choice == 1){
+            //iterate semua nota yang ada kemudian melakukan method kerjakan() yang ada pada class Nota
             System.out.printf("Stand back! %s beginning to nyuci!%n", loginMember.getNama());
             for (Nota nota : notaList){
                 System.out.println(nota.kerjakan());
             }
         } else if (choice == 2) {
+            //iterate semua nota kemudian memanggil method getNotaStatus() yang ada di class Nota
             for (Nota nota : notaList){
                 System.out.println(nota.getNotaStatus());
             }
         } else if (choice == 3) {
+            //mengubah boolean logout agar user bisa keluar dari menu Employee
             logout = true;
         }else{
             System.out.println("Perintah tidak diketahui!");

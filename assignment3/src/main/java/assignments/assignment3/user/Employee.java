@@ -17,7 +17,7 @@ public class Employee extends Member {
      * @param nama -> Nama lengkap dari employee
      */
     private static String generateId(String nama) {
-        // TODO
+        // generate id untuk employee berbentuk NAMA-NOMORID
         String namaDepan;
         if (nama.contains(" ")){namaDepan = nama.split(" ")[0].toUpperCase();}
         else{namaDepan = nama.toUpperCase();}

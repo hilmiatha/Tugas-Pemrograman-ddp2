@@ -4,14 +4,12 @@ public class CuciService implements LaundryService{
     private Boolean status = false;
     @Override
     public String doWork() {
-        // TODO
         this.status = true;
         return "Sedang mencuci...";
     }
 
     @Override
     public boolean isDone() {
-        // TODO
         return status;
     }
 

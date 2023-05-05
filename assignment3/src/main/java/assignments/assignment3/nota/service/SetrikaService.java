@@ -4,7 +4,6 @@ public class SetrikaService implements LaundryService{
     private Boolean status = false;
     @Override
     public String doWork() {
-        // TODO
         this.status = true;
         return "Sedang menyetrika...";
     }

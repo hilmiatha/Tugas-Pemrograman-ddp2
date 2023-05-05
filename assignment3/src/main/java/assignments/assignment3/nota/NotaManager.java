@@ -13,7 +13,7 @@ public class NotaManager {
      * Skips ke hari berikutnya dan update semua entri nota yang sesuai.
      */
     public static void toNextDay(){
-        //TODO: implement skip hari
+        //mengubah tanggal dan mengiterate semua nota kemudian memanggil method toNextDay() yang ada di class Nota
         cal.add(Calendar.DAY_OF_MONTH, 1);
         for (Nota nota : notaList){
             nota.toNextDay();
@@ -26,7 +26,7 @@ public class NotaManager {
      * @param nota Nota object untuk ditambahkan.
      */
     public static void addNota(Nota nota){
-        //TODO: implement add nota
+        // memanjangkan notaList kemudian assign nota baru di array tersebut
         Nota[] lstDummy = Arrays.copyOf(notaList, notaList.length+1);
         lstDummy[lstDummy.length-1] = nota;
         notaList = lstDummy;

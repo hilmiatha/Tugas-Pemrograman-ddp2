@@ -43,7 +43,7 @@ public class LoginManager {
     public Member register(String nama, String noHp, String password) {
         // TODO
         String idMember = generateId(nama,noHp);
-        if (memberSystem.isMemberExist(idMember)){
+        if (memberSystem.isMemberExist(idMember)){ //member gagal daftar apabila id yang dimilikinya sudah ada di sistem
             return null;
         }
         Member memberBaru = new Member(nama,idMember,password);

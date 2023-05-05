@@ -32,14 +32,14 @@ public class Nota {
     }
 
     public void addService(LaundryService service) {
-        //TODO
+        // memanjangkan services kemudian assign LaundryService baru di array tersebut
         LaundryService[] lstDummy = Arrays.copyOf(services, services.length + 1);
         lstDummy[lstDummy.length - 1] = service;
         services = lstDummy;
     }
 
     public String kerjakan() {
-        // TODO
+        // memanggil doWork() pada LaundryService yang ada pada arraylist services(1 service per sekali panggil method ini)
         for (LaundryService service : services){
             if (!service.isDone()){
                 String output = service.doWork();
@@ -53,7 +53,7 @@ public class Nota {
     }
 
     public void toNextDay() {
-        // TODO
+        //sisaHariPengerjaan dikurangi apabila nota belum selesai
         System.out.println("sebelum " + sisaHariPengerjaan);
         if (!isDone()){
             sisaHariPengerjaan-=1;
@@ -62,7 +62,7 @@ public class Nota {
     }
 
     public long calculateHarga() {
-        // TODO
+        // menghitung semua harga termasuk harga service tambahan dan kompensasi apabila telat
         long totalHarga = getBaseHarga() * getBerat();
         for (LaundryService service : services){
             totalHarga += service.getHarga(getBerat());
@@ -77,7 +77,7 @@ public class Nota {
     }
 
     public String getNotaStatus() {
-        // TODO
+        // mengembalikan status nota
         if (isDone()) {
             return String.format("Nota %d : Sudah selesai.",getId());
         }
@@ -86,7 +86,6 @@ public class Nota {
 
     @Override
     public String toString() {
-        // TODO
         String output = String.format("""
                 [ID Nota = %d]
                 ID    : %s
@@ -114,7 +113,7 @@ public class Nota {
     }
 
     /*
-    fungsi untuk return integer lama hari pengerjaan sesuai dengan paket yang diinput
+    method untuk return integer lama hari pengerjaan sesuai dengan paket yang diinput
      */
     public int toHariKerja(String paket) {
         paket = paket.toLowerCase();
@@ -127,7 +126,7 @@ public class Nota {
         return -1;
     }
     /*
-    fungsi untuk return integer harga paket sesuai dengan paket yang diinput
+    method untuk return integer harga paket sesuai dengan paket yang diinput
      */
     public int toBaseHarga(String paket){
         paket = paket.toLowerCase();

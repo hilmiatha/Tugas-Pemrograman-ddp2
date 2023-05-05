@@ -33,7 +33,7 @@ public class Member {
      * @param nota Nota object untuk ditambahkan.
      */
     public void addNota(Nota nota) {
-        // TODO
+        // memanjangkan notaList yang ada pada setiap member kemudian assign nota baru di array tersebut
         Nota[] lstDummy = Arrays.copyOf(notaList, notaList.length+1);
         lstDummy[lstDummy.length-1] = nota;
         notaList = lstDummy;
