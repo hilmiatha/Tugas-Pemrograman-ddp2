@@ -54,11 +54,9 @@ public class Nota {
 
     public void toNextDay() {
         //sisaHariPengerjaan dikurangi apabila nota belum selesai
-        System.out.println("sebelum " + sisaHariPengerjaan);
         if (!isDone()){
             sisaHariPengerjaan-=1;
         }
-        System.out.println("sesudah "+sisaHariPengerjaan);
     }
 
     public long calculateHarga() {
