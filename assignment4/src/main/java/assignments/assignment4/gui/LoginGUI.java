@@ -39,6 +39,56 @@ public class LoginGUI extends JPanel {
      * */
     private void initGUI() {
         // TODO
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(20, 0, 20, 0);
+
+        idLabel = new JLabel();
+        idLabel.setText("Masukkan ID anda:");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        mainPanel.add(idLabel, gbc);
+
+        idTextField = new JTextField();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.weightx = 0.5;
+        mainPanel.add(idTextField, gbc);
+
+        passwordLabel = new JLabel();
+        passwordLabel.setText("Masukkan password:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        mainPanel.add(passwordLabel,gbc);
+
+        passwordField = new JPasswordField();
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.weightx = 0.5;
+        mainPanel.add(passwordField, gbc);
+
+        loginButton = new JButton();
+        loginButton.setText("Login");
+        loginButton.addActionListener(e -> handleLogin());
+        gbc.gridy = 4;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        mainPanel.add(loginButton,gbc);
+
+        backButton = new JButton();
+        backButton.setText("Kembali");
+        backButton.addActionListener(e -> handleBack());
+        gbc.gridy = 5;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        mainPanel.add(backButton,gbc);
+
     }
 
     /**
@@ -46,6 +96,9 @@ public class LoginGUI extends JPanel {
      * Akan dipanggil jika pengguna menekan "backButton"
      * */
     private void handleBack() {
+        idTextField.setText("");
+        passwordField.setText("");
+        MainFrame.getInstance().navigateTo(HomeGUI.KEY);
     }
 
     /**
@@ -54,5 +107,15 @@ public class LoginGUI extends JPanel {
      * */
     private void handleLogin() {
         // TODO
+        String idUser = idTextField.getText();
+        String password = passwordField.getText();
+        idTextField.setText("");
+        passwordField.setText("");
+        if(!MainFrame.getInstance().login(idUser,password)){
+            JLabel label = new JLabel("ID or pasword invalid!");
+            label.setFont(new Font("monospaced", Font.PLAIN, 12));
+            JOptionPane.showMessageDialog(mainPanel, label, "Perhatian!", JOptionPane.ERROR_MESSAGE);
+
+        }
     }
 }

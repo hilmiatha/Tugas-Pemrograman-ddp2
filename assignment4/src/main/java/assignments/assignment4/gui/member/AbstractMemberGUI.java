@@ -13,7 +13,7 @@ public abstract class AbstractMemberGUI extends JPanel implements Loginable{
     private JLabel welcomeLabel;
     private JLabel loggedInAsLabel;
     protected Member loggedInMember;
-    private final SystemCLI systemCLI;
+    protected final SystemCLI systemCLI;
 
     public AbstractMemberGUI(SystemCLI systemCLI) {
         super(new BorderLayout());
@@ -89,6 +89,15 @@ public abstract class AbstractMemberGUI extends JPanel implements Loginable{
      * */
     public boolean login(String id, String password) {
         // TODO
+        if(systemCLI.isMemberExist(id)){
+            loggedInMember = systemCLI.authUser(id,password);
+            if (loggedInMember == null){
+                return false;
+            }
+            welcomeLabel.setText("Welcome! " + loggedInMember.getNama());
+            loggedInAsLabel.setText("Logged in as " + loggedInMember.getId());
+            return true;
+        }
         return false;
     }
 
