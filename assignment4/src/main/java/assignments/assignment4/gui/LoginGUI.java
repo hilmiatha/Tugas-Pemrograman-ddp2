@@ -107,7 +107,7 @@ public class LoginGUI extends JPanel {
      * */
     private void handleLogin() {
         // TODO
-        String idUser = idTextField.getText();
+        String idUser = idTextField.getText().trim();
         String password = passwordField.getText();
         idTextField.setText("");
         passwordField.setText("");
