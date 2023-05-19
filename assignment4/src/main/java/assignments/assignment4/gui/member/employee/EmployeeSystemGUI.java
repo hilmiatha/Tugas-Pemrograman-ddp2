@@ -31,7 +31,6 @@ public class EmployeeSystemGUI extends AbstractMemberGUI {
      * */
     @Override
     protected JButton[] createButtons() {
-        // TODO
         JButton[] arrButton = new JButton[2];
         JButton nyuciButton = new JButton("It's nyuci time");
         JButton displayButton = new JButton("Display list nota");
@@ -59,7 +58,6 @@ public class EmployeeSystemGUI extends AbstractMemberGUI {
      * Akan dipanggil jika pengguna menekan button pertama pada createButtons
      * */
     private void displayNota() {
-        // TODO
         String output = "";
         if (NotaManager.notaList.length == 0){
             JLabel label = new JLabel("Belum ada nota");
@@ -82,7 +80,6 @@ public class EmployeeSystemGUI extends AbstractMemberGUI {
      * Akan dipanggil jika pengguna menekan button kedua pada createButtons
      * */
     private void cuci() {
-        // TODO
         JLabel label = new JLabel("Stand back!! " + loggedInMember.getNama() + " beginning to nyuci!");
         label.setFont(new Font("monospaced", Font.PLAIN, 12));
         JOptionPane.showMessageDialog(this, label, "cuciCuci Time", JOptionPane.INFORMATION_MESSAGE);

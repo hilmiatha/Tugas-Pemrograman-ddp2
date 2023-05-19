@@ -34,7 +34,6 @@ public class MemberSystemGUI extends AbstractMemberGUI {
      * */
     @Override
     protected JButton[] createButtons() {
-        // TODO
         JButton[] arrButton = new JButton[2];
         JButton laundryButton = new JButton("Saya ingin laundry");
         JButton detailButton = new JButton("Lihat detail nota saya");
@@ -62,7 +61,6 @@ public class MemberSystemGUI extends AbstractMemberGUI {
      * Akan dipanggil jika pengguna menekan button pertama pada createButtons
      * */
     private void showDetailNota() {
-        // TODO
         String output = "";
         if(getLoggedInMember().getNotaList().length != 0) {
             for (Nota nota : getLoggedInMember().getNotaList()) {
@@ -89,7 +87,6 @@ public class MemberSystemGUI extends AbstractMemberGUI {
      * Akan dipanggil jika pengguna menekan button kedua pada createButtons
      * */
     private void createNota() {
-        // TODO
         MainFrame.getInstance().navigateTo(CreateNotaGUI.KEY);
     }
 

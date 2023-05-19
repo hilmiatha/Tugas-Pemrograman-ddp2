@@ -38,10 +38,11 @@ public class LoginGUI extends JPanel {
      * Be creative and have fun!
      * */
     private void initGUI() {
-        // TODO
+        // Konfigurasi awal GridBagConstraints
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(20, 0, 20, 0);
 
+        //Inisiasi dan konfigurasi tempat label id
         idLabel = new JLabel();
         idLabel.setText("Masukkan ID anda:");
         gbc.gridx = 0;
@@ -49,6 +50,7 @@ public class LoginGUI extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         mainPanel.add(idLabel, gbc);
 
+        //Inisiasi dan konfigurasi tempat textField ID
         idTextField = new JTextField();
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -58,12 +60,14 @@ public class LoginGUI extends JPanel {
         gbc.weightx = 0.5;
         mainPanel.add(idTextField, gbc);
 
+        //Inisiasi dan konfigurasi tempat label password
         passwordLabel = new JLabel();
         passwordLabel.setText("Masukkan password:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         mainPanel.add(passwordLabel,gbc);
 
+        //Inisiasi dan konfigurasi tempat field password
         passwordField = new JPasswordField();
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -73,6 +77,7 @@ public class LoginGUI extends JPanel {
         gbc.weightx = 0.5;
         mainPanel.add(passwordField, gbc);
 
+        //Inisiasi dan konfigurasi tempat button login
         loginButton = new JButton();
         loginButton.setText("Login");
         loginButton.addActionListener(e -> handleLogin());
@@ -81,6 +86,7 @@ public class LoginGUI extends JPanel {
         gbc.gridwidth = 2;
         mainPanel.add(loginButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat button back
         backButton = new JButton();
         backButton.setText("Kembali");
         backButton.addActionListener(e -> handleBack());
@@ -107,7 +113,7 @@ public class LoginGUI extends JPanel {
      * */
     private void handleLogin() {
         // TODO
-        String idUser = idTextField.getText().trim();
+        String idUser = idTextField.getText();
         String password = passwordField.getText();
         idTextField.setText("");
         passwordField.setText("");

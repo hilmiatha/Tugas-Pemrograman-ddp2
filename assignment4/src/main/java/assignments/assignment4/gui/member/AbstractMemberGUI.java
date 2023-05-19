@@ -88,7 +88,7 @@ public abstract class AbstractMemberGUI extends JPanel implements Loginable{
      * @return true jika ID dan password sesuai dengan instance member, false jika tidak.
      * */
     public boolean login(String id, String password) {
-        // TODO
+        // memanfaatkan abstract class systemCLI untuk mengecek keberadaan member dengan id dan password yang diberikan
         if(systemCLI.isMemberExist(id)){
             loggedInMember = systemCLI.authUser(id,password);
             if (loggedInMember == null){

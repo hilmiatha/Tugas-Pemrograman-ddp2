@@ -84,7 +84,6 @@ public class MainFrame extends JFrame{
      * @param page -> key dari halaman yang diinginkan.
      * */
     public void navigateTo(String page){
-        // TODO
         cards.show(mainPanel,page);
     }
 
@@ -102,7 +101,7 @@ public class MainFrame extends JFrame{
         for (Loginable panel:
                 loginablePanel) {
             // TODO
-            if (panel.login(id,password)){
+            if (panel.login(id,password)){ //pergi ke halaman employee atau member sesuai dengan id dan password jika benar
                 navigateTo(panel.getPageName());
                 return true;
             }

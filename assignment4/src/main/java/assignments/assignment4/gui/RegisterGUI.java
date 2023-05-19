@@ -42,10 +42,11 @@ public class RegisterGUI extends JPanel {
      * Be creative and have fun!
      * */
     private void initGUI() {
-        // TODO
+        //konfigurasi awal GridBagConstraints
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 0, 10, 0);
 
+        //Inisiasi dan konfigurasi tempat label name
         nameLabel = new JLabel();
         nameLabel.setText("Masukkan nama anda:");
         gbc.gridx = 0;
@@ -53,6 +54,7 @@ public class RegisterGUI extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         mainPanel.add(nameLabel, gbc);
 
+        //Inisiasi dan konfigurasi tempat textField nama
         nameTextField = new JTextField();
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -62,12 +64,14 @@ public class RegisterGUI extends JPanel {
         gbc.weightx = 0.5;
         mainPanel.add(nameTextField, gbc);
 
+        //Inisiasi dan konfigurasi tempat label phone
         phoneLabel = new JLabel();
         phoneLabel.setText("Masukkan nomor handphone anda:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         mainPanel.add(phoneLabel,gbc);
 
+        //Inisiasi dan konfigurasi tempat textField phone
         phoneTextField = new JTextField();
         gbc.gridx = 0;
         gbc.gridy = 3;
@@ -77,12 +81,14 @@ public class RegisterGUI extends JPanel {
         gbc.weightx = 0.5;
         mainPanel.add(phoneTextField, gbc);
 
+        //Inisiasi dan konfigurasi tempat label password
         passwordLabel = new JLabel();
         passwordLabel.setText("Masukkan password anda:");
         gbc.gridx = 0;
         gbc.gridy = 4;
         mainPanel.add(passwordLabel,gbc);
 
+        //Inisiasi dan konfigurasi tempat field password
         passwordField = new JPasswordField();
         gbc.gridx = 0;
         gbc.gridy = 5;
@@ -92,6 +98,7 @@ public class RegisterGUI extends JPanel {
         gbc.weightx = 0.5;
         mainPanel.add(passwordField, gbc);
 
+        //Inisiasi dan konfigurasi tempat button register
         registerButton = new JButton();
         registerButton.setText("Register");
         registerButton.addActionListener(e -> handleRegister());
@@ -100,6 +107,7 @@ public class RegisterGUI extends JPanel {
         gbc.gridwidth = 2;
         mainPanel.add(registerButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat button back
         backButton = new JButton();
         backButton.setText("Kembali");
         backButton.addActionListener(e -> handleBack());
@@ -142,7 +150,7 @@ public class RegisterGUI extends JPanel {
             return;
         }
 
-        Member member = loginManager.register(nameTextField.getText().trim(),phoneTextField.getText().trim(), passwordField.getText());
+        Member member = loginManager.register(nameTextField.getText().trim(),phoneTextField.getText(), passwordField.getText());
         if (member == null){
             JLabel label = new JLabel("User dengan nama " + nameTextField.getText() + " dan nomor hp " + phoneTextField.getText() + " sudah ada!");
             label.setFont(new Font("monospaced", Font.PLAIN, 12));
@@ -162,7 +170,7 @@ public class RegisterGUI extends JPanel {
      */
     private boolean validasiHandphone(String noHp) {
         //setiap char dari string akan dicek apakah digit atau bukan
-        return noHp.trim().length() > 0 && noHp.trim().chars().allMatch(Character::isDigit);
+        return noHp.length() > 0 && noHp.chars().allMatch(Character::isDigit);
     }
 
 }

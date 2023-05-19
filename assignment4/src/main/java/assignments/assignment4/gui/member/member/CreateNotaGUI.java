@@ -52,10 +52,11 @@ public class CreateNotaGUI extends JPanel {
      * Be creative and have fun!
      * */
     private void initGUI() {
-        // TODO
+        //Konfigurasi awal GridBagConstraints
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
 
+        //Inisiasi dan konfigurasi tempat label paket
         paketLabel = new JLabel();
         paketLabel.setText("Paket Laundry:");
         gbc.gridx = 0;
@@ -63,11 +64,13 @@ public class CreateNotaGUI extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         mainpanel.add(paketLabel,gbc);
 
+        //Inisiasi dan konfigurasi tempat combobox paket
         paketComboBox = new JComboBox<>(paket);
         gbc.gridx = 1;
         gbc.gridy = 0;
         mainpanel.add(paketComboBox,gbc);
 
+        //Inisiasi dan konfigurasi tempat button showpaket
         showPaketButton = new JButton();
         showPaketButton.setText("Show paket");
         showPaketButton.addActionListener(e -> showPaket());
@@ -75,30 +78,35 @@ public class CreateNotaGUI extends JPanel {
         gbc.gridy = 0;
         mainpanel.add(showPaketButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat label berat
         beratLabel = new JLabel();
         beratLabel.setText("Berat cucian (kg):");
         gbc.gridx = 0;
         gbc.gridy = 1;
         mainpanel.add(beratLabel,gbc);
 
+        //Inisiasi dan konfigurasi tempat text field berat
         beratTextField = new JTextField();
         gbc.gridx = 1;
         gbc.gridy = 1;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         mainpanel.add(beratTextField,gbc);
 
+        //Inisiasi dan konfigurasi tempat checkbox setrika service
         setrikaCheckBox = new JCheckBox();
         setrikaCheckBox.setText("Tambah setrika service (1000/kg)");
         gbc.gridx = 0;
         gbc.gridy = 2;
         mainpanel.add(setrikaCheckBox, gbc);
 
+        //Inisiasi dan konfigurasi tempat checkbox antar service
         antarCheckBox = new JCheckBox();
         antarCheckBox.setText("Tambah antar service (2000/4kg pertama, kemudian 500/kg)");
         gbc.gridx = 0;
         gbc.gridy = 3;
         mainpanel.add(antarCheckBox, gbc);
 
+        //Inisiasi dan konfigurasi tempat button create nota
         createNotaButton = new JButton();
         createNotaButton.setText("Buat Nota");
         createNotaButton.addActionListener(e -> createNota());
@@ -107,6 +115,7 @@ public class CreateNotaGUI extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         mainpanel.add(createNotaButton, gbc);
 
+        //Inisiasi dan konfigurasi tempat button back
         backButton = new JButton();
         backButton.setText("Kembali");
         backButton.addActionListener(e -> handleBack());
@@ -141,14 +150,13 @@ public class CreateNotaGUI extends JPanel {
      * Akan dipanggil jika pengguna menekan "createNotaButton"
      * */
     private void createNota() {
-        // TODO
         if(beratTextField.getText().trim().equals("")){
             JLabel label = new JLabel("field berat wajib diisi!");
             label.setFont(new Font("monospaced", Font.PLAIN, 12));
             JOptionPane.showMessageDialog(mainpanel, label, "Perhatian!", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        if (!validasiBerat(beratTextField.getText().trim())){
+        if (!validasiBerat(beratTextField.getText())){
             JLabel label = new JLabel("Berat wajib berisi angka!");
             label.setFont(new Font("monospaced", Font.PLAIN, 12));
             JOptionPane.showMessageDialog(mainpanel, label, "Perhatian!", JOptionPane.ERROR_MESSAGE);
@@ -198,10 +206,13 @@ public class CreateNotaGUI extends JPanel {
      * Akan dipanggil jika pengguna menekan "backButton"
      * */
     private void handleBack() {
-        // TODO
         clearGUI();
         MainFrame.getInstance().navigateTo(memberSystemGUI.getPageName());
     }
+
+    /**
+     * Method untuk clear semua perubahan di komponen GUI
+     */
     private void clearGUI(){
         beratTextField.setText("");
         paketComboBox.setSelectedItem(paket[0]);
@@ -213,6 +224,6 @@ public class CreateNotaGUI extends JPanel {
      */
     private boolean validasiBerat(String berat) {
         //setiap char dari string akan dicek apakah digit atau bukan
-        return berat.trim().length() > 0 && berat.trim().chars().allMatch(Character::isDigit);
+        return berat.length() > 0 && berat.chars().allMatch(Character::isDigit);
     }
 }

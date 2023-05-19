@@ -38,9 +38,10 @@ public class HomeGUI extends JPanel {
      * Be creative and have fun!
      * */
     private void initGUI() {
+        //pengaturan awal GridBagConstraints
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(20, 0, 20, 0);
-        //PENGATURAN POSISI LABEL TITLE
+        //Inisiasi dan konfigurasi tempat label title
         titleLabel = new JLabel();
         titleLabel.setText("Selamat Datang di CuciCuci System!");
         Font font = new Font("Arial", Font.BOLD, 24);
@@ -49,6 +50,7 @@ public class HomeGUI extends JPanel {
         gbc.gridy = 0;
         mainPanel.add(titleLabel, gbc);
 
+        //Inisiasi dan konfigurasi tempat button login
         loginButton = new JButton();
         loginButton.setText("Login");
         loginButton.addActionListener(e -> handleToLogin());
@@ -56,6 +58,7 @@ public class HomeGUI extends JPanel {
         gbc.gridy = 1;
         mainPanel.add(loginButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat button register
         registerButton = new JButton();
         registerButton.setText("Register");
         registerButton.addActionListener(e -> handleToRegister());
@@ -63,6 +66,7 @@ public class HomeGUI extends JPanel {
         gbc.gridy = 2;
         mainPanel.add(registerButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat button toNextDay
         toNextDayButton = new JButton();
         toNextDayButton.setText("Next Day");
         toNextDayButton.addActionListener(e -> handleNextDay());
@@ -70,6 +74,7 @@ public class HomeGUI extends JPanel {
         gbc.gridy = 3;
         mainPanel.add(toNextDayButton,gbc);
 
+        //Inisiasi dan konfigurasi tempat label date
         dateLabel = new JLabel();
         dateLabel.setText("Hari ini : " + fmt.format(cal.getTime()));
         gbc.gridx = 1;
